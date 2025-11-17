@@ -1,6 +1,6 @@
 # personal-portfolio
 
-Personal portfolio website for **Sithmi Shehara**.
+Personal portfolio website for **Lochana Chandira**.
 
 ## What is included
 
@@ -28,4 +28,4 @@ Personal portfolio website for **Sithmi Shehara**.
 
 ## License
 
-MIT © Sithmi Shehara
+MIT © Lochana Chandira
