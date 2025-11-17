@@ -1,0 +1,125 @@
+/* Base colors */
+:root{
+  --bg: #0f1724;
+  --bg-2: #071226; /* secondary background stop (new variable) */
+  --card: #0b1220;
+  --soft: #0c1422;
+  --text: #e6eef8;
+  --muted: #a3b3c9;
+  /* Accent colors changed to a light green -> soft yellow palette */
+  --accent: #8EE89B;   /* light green */
+  --accent-2: #F6E58D; /* soft yellow */
+  --glass: rgba(255,255,255,0.03);
+}
+
+/* Light theme overrides */
+:root.light {
+  --bg: #f6f9fc;
+  --bg-2: #eef6ff;
+  --card: #ffffff;
+  --soft: #f3f6f9;
+  --text: #0b1220;
+  --muted: #556779;
+  /* Light-theme accents: slightly stronger green + yellow for contrast */
+  --accent: #2ea44f; /* medium green */
+  --accent-2: #f0c419; /* warm yellow */
+  --glass: rgba(11,18,32,0.03);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  /* Use two-step background gradient using the new --bg-2 variable */
+  background:linear-gradient(180deg,var(--bg), var(--bg-2) 120%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Navbar */
+.navbar{
+  /* Framed glass-style navbar: subtle background, border, rounded corners
+     and a light blur to separate it from the hero background. Uses the
+     theme-aware --glass variable so it works in dark & light modes. */
+  background: var(--glass);
+  padding:0.5rem;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
+  backdrop-filter: blur(6px);
+}
+
+/* Lighter border for light theme */
+html.light .navbar{
+  border:1px solid rgba(11,18,32,0.06);
+}
+.navbar .navbar-brand { color:var(--text); }
+.nav-link { color:var(--muted) !important; }
+.nav-link:hover { color:var(--text) !important; }
+
+/* Hero */
+.hero{
+  padding:5rem 0;
+  min-height:65vh;
+  display:flex;
+  align-items:center;
+}
+.accent{ color:var(--accent); }
+.profile-img{
+  /* Fixed-size circular avatar that preserves the image aspect ratio
+     and avoids visual distortion. Use a thin border + shadow instead of
+     padding + background so uploaded photos render cleanly. */
+  width:220px;
+  height:220px;
+  max-width:100%;
+  display:block;
+  border-radius:50%;
+  object-fit:cover;
+  padding:0; /* remove extra space that caused oval rendering */
+  border:4px solid rgba(255,255,255,0.06);
+  background:none;
+}
+
+/* Sections */
+.section-title{ color:var(--accent); font-weight:600; }
+.bg-soft{ background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
+
+/* Remove image panels from project cards so only title/description remain */
+#projects .card-img-top{ display:none; }
+
+/* Add a little top spacing to project card bodies after removing images */
+#projects .card .card-body{ padding-top:1.25rem; }
+
+/* Cards and skills */
+.card{ border:none; background:var(--card); color:var(--text); }
+.skill{ background:var(--glass); padding:16px; border-radius:12px; text-align:center; font-weight:600; }
+
+/* Buttons */
+.btn-primary{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); border:none; }
+.btn-outline-secondary{ color:var(--text); border-color:rgba(255,255,255,0.08); }
+
+/* Footer */
+footer{ color:var(--muted); }
+
+/* Animations */
+@keyframes rise { from { transform: translateY(18px); opacity:0 } to { transform:none; opacity:1 } }
+@keyframes up { from { transform: translateY(40px); opacity:0 } to { transform:none; opacity:1 } }
+.animate-rise{ animation:rise 700ms ease forwards; }
+.animate-up{ animation:up 700ms 150ms ease forwards; }
+.animate-raise{ animation:up 700ms 300ms ease forwards; }
+
+/* Utility */
+.shadow-sm{ box-shadow: 0 6px 18px rgba(2,6,23,0.6); }
+
+/* Contact form result */
+#formResult{ padding:10px; border-radius:8px; background:rgba(0,0,0,0.2); color:var(--text); }
+
+/* Responsive tweaks */
+@media (max-width:991px){
+  .hero{ padding-top:6rem; text-align:center; }
+  .profile-img{ margin:1.5rem auto 0; }
+}
+
+/* Auto switch based on saved theme */
+html.light body { background:linear-gradient(180deg,#f6f9fc,#eef6ff 120%); }

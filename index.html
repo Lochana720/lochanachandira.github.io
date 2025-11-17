@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lochana Chandira — Portfolio</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/style.css">
+
+  <!-- Meta -->
+  <meta name="description" content="Portfolio of Lochana Chandira — aspiring web developer and IT student.">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#"> Lochana Chandira  </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-3">
+          <button id="themeToggle" class="btn btn-outline-secondary btn-sm">Dark</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<header id="home" class="hero d-flex align-items-center">
+  <div class="container text-center text-lg-start">
+    <div class="row align-items-center">
+      <div class="col-lg-7 animate-up">
+        <h1 class="display-5 mb-3">Hi, I'm <span class="accent">Lochana Chandira </span></h1>
+        <p class="lead mb-4">Aspiring Web Developer & IT Student — building practical projects with HTML, CSS, JavaScript and Python.</p>
+        <a href="#projects" class="btn btn-primary btn-lg">See my work</a>
+      </div>
+      <div class="col-lg-5 text-center animate-rise">
+        <!-- Using the uploaded screenshot saved as assets/profileimage.png -->
+        <img src="assets/profileimage1.png" alt="Lochana Chandira — profile photo" class="profile-img img-fluid rounded-circle shadow">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 section-title">About Me</h2>
+    <div class="row g-4">
+      <div class="col-md-8">
+        <p>I am an enthusiastic IT student passionate about technology, software development, and web design. I focus on learning practical skills by building small, usable projects — and I enjoy turning ideas into working applications.</p>
+        <p>Currently learning full-stack web development basics, Python scripting, and Android app development.</p>
+        <ul>
+          <li>Education: IT student (ongoing)</li>
+          <li>Email: <a href="mailto:aga.lochana@gmail.com">aga.lochana@gmail.com</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="card p-3 shadow-sm">
+          <h5 class="mb-2">Quick Info</h5>
+          <p class="mb-1"><strong>Location:</strong> Kelaniya, Western Province, Sri Lanka</p>
+          <p class="mb-0"><strong>Role:</strong> Web Developer (aspiring)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-5 bg-soft">
+  <div class="container">
+    <h2 class="mb-4 section-title">Skills</h2>
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <div class="skill animate-up">HTML</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="skill animate-up">CSS</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="skill animate-up">JavaScript</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="skill animate-up">Python</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="skill animate-up">Bootstrap</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="skill animate-up">Kotlin (basic)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 section-title">Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm animate-raise">
+          <!-- Specific image for Portfolio Website project (now using portfolio.svg) -->
+          <img src="assets/portfolio.svg" class="card-img-top" alt="Portfolio Website">
+          <div class="card-body">
+            <h5 class="card-title">Portfolio Website</h5>
+            <p class="card-text">A responsive portfolio built with HTML, CSS and Bootstrap. Includes dark-mode and animations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm animate-raise">
+          <img src="assets/project-placeholder.svg" class="card-img-top" alt="project 2">
+          <div class="card-body">
+            <h5 class="card-title">Student Result Manager (Python)</h5>
+            <p class="card-text">CLI app to store student scores, calculate averages and generate CSV reports.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm animate-raise">
+          <img src="assets/project-placeholder.svg" class="card-img-top" alt="project 3">
+          <div class="card-body">
+            <h5 class="card-title">Task Tracker (Android)</h5>
+            <p class="card-text">Simple Android app (Kotlin) to add, complete and remove daily tasks using local storage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-soft">
+  <div class="container">
+    <h2 class="mb-4 section-title">Contact</h2>
+    <div class="row">
+      <div class="col-md-8">
+        <form id="contactForm" class="shadow-sm p-4 card">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input id="cname" class="form-control" placeholder="Your name">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input id="cemail" type="email" class="form-control" placeholder="Your email">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea id="cmessage" class="form-control" rows="5" placeholder="Message"></textarea>
+          </div>
+          <button type="button" id="sendBtn" class="btn btn-primary">Send Message</button>
+          <div id="formResult" class="mt-3" style="display:none;"></div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 h-100">
+          <h5>Get in touch</h5>
+          <p>aga.lochana@gmail.com</p>
+          <p>Feel free to replace this email with your preferred contact address.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-3 text-center">
+  <div class="container">
+    <small>© 2025 Lochana Chandira  • </small>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/script.js"></script>
+</body>
+</html>

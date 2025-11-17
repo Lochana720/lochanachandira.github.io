@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="520" viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Portfolio project image">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <style>
+      .bg{fill:#0b1220}
+      .card{fill:url(#g1);opacity:0.12}
+      .screen{fill:#fff}
+      .code{fill:#0b1220}
+    </style>
+  </defs>
+  <rect class="bg" width="800" height="520" rx="24"/>
+  <!-- card -->
+  <rect x="80" y="60" width="640" height="320" rx="12" class="card"/>
+  <!-- monitor -->
+  <rect x="140" y="100" width="520" height="220" rx="8" fill="#ffffff"/>
+  <rect x="170" y="130" width="460" height="160" rx="6" fill="#0b1220" opacity="0.06"/>
+  <!-- code lines -->
+  <g transform="translate(180,140)">
+    <rect x="0" y="0" width="360" height="12" rx="6" fill="#7dd3fc"/>
+    <rect x="0" y="28" width="300" height="10" rx="5" fill="#8b5cf6"/>
+    <rect x="0" y="52" width="200" height="10" rx="5" fill="#7dd3fc"/>
+  </g>
+  <!-- keyboard -->
+  <rect x="240" y="340" width="320" height="14" rx="6" fill="#1b2a3a" opacity="0.12"/>
+  <!-- tag -->
+  <g transform="translate(96,396)">
+    <rect width="608" height="64" rx="8" fill="#071226" opacity="0.08"/>
+    <text x="24" y="40" fill="#e6eef8" font-family="Inter, Arial, sans-serif" font-size="22">Portfolio Website</text>
+  </g>
+</svg>
