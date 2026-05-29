@@ -1,125 +1,378 @@
-/* Base colors */
-:root{
-  --bg: #0f1724;
-  --bg-2: #071226; /* secondary background stop (new variable) */
-  --card: #0b1220;
-  --soft: #0c1422;
-  --text: #e6eef8;
-  --muted: #a3b3c9;
-  /* Accent colors changed to a light green -> soft yellow palette */
-  --accent: #8EE89B;   /* light green */
-  --accent-2: #F6E58D; /* soft yellow */
-  --glass: rgba(255,255,255,0.03);
+/* ─── Google Fonts ──────────────────────────────────────────── */
+/* Loaded via <link> in index.html — Outfit (headings) + Inter (body) */
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --bg:       #0f1724;
+  --bg-2:     #071226;
+  --card:     rgba(11, 18, 34, 0.85);
+  --soft:     #0c1422;
+  --text:     #e6eef8;
+  --muted:    #a3b3c9;
+  --accent:   #8EE89B;
+  --accent-2: #F6E58D;
+  --glass:    rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --shadow:   0 8px 32px rgba(0,0,0,0.5);
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* Light theme overrides */
 :root.light {
-  --bg: #f6f9fc;
-  --bg-2: #eef6ff;
-  --card: #ffffff;
-  --soft: #f3f6f9;
-  --text: #0b1220;
-  --muted: #556779;
-  /* Light-theme accents: slightly stronger green + yellow for contrast */
-  --accent: #2ea44f; /* medium green */
-  --accent-2: #f0c419; /* warm yellow */
-  --glass: rgba(11,18,32,0.03);
+  --bg:       #f4f7fb;
+  --bg-2:     #eaf1ff;
+  --card:     rgba(255,255,255,0.9);
+  --soft:     #f0f4f9;
+  --text:     #0b1220;
+  --muted:    #556779;
+  --accent:   #2ea44f;
+  --accent-2: #f0c419;
+  --glass:    rgba(11,18,32,0.04);
+  --glass-border: rgba(11,18,32,0.1);
+  --shadow:   0 8px 32px rgba(0,0,0,0.1);
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  /* Use two-step background gradient using the new --bg-2 variable */
-  background:linear-gradient(180deg,var(--bg), var(--bg-2) 120%);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+/* ─── Base Reset ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
 }
 
-/* Navbar */
-.navbar{
-  /* Framed glass-style navbar: subtle background, border, rounded corners
-     and a light blur to separate it from the hero background. Uses the
-     theme-aware --glass variable so it works in dark & light modes. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Navbar ────────────────────────────────────────────────── */
+.navbar {
   background: var(--glass);
-  padding:0.5rem;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
-  backdrop-filter: blur(6px);
+  padding: 0.6rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin: 0.75rem;
+}
+html.light .navbar { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+.navbar .navbar-brand {
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.navbar .navbar-brand:hover { color: var(--accent); }
+.nav-link { color: var(--muted) !important; transition: color var(--transition); }
+.nav-link:hover { color: var(--text) !important; }
+
+/* Social icons in navbar */
+.nav-social {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  transition: color var(--transition), transform var(--transition);
+  padding: 4px;
+}
+.nav-social:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
 }
 
-/* Lighter border for light theme */
-html.light .navbar{
-  border:1px solid rgba(11,18,32,0.06);
-}
-.navbar .navbar-brand { color:var(--text); }
-.nav-link { color:var(--muted) !important; }
-.nav-link:hover { color:var(--text) !important; }
-
-/* Hero */
-.hero{
-  padding:5rem 0;
-  min-height:65vh;
-  display:flex;
-  align-items:center;
-}
-.accent{ color:var(--accent); }
-.profile-img{
-  /* Fixed-size circular avatar that preserves the image aspect ratio
-     and avoids visual distortion. Use a thin border + shadow instead of
-     padding + background so uploaded photos render cleanly. */
-  width:220px;
-  height:220px;
-  max-width:100%;
-  display:block;
-  border-radius:50%;
-  object-fit:cover;
-  padding:0; /* remove extra space that caused oval rendering */
-  border:4px solid rgba(255,255,255,0.06);
-  background:none;
+/* ─── Hero Section ──────────────────────────────────────────── */
+.hero {
+  padding: 6rem 0 4rem;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-/* Sections */
-.section-title{ color:var(--accent); font-weight:600; }
-.bg-soft{ background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; }
+.hero .lead { color: var(--muted); font-size: 1.1rem; max-width: 520px; }
 
-/* Remove image panels from project cards so only title/description remain */
-#projects .card-img-top{ display:none; }
+.accent { color: var(--accent); }
 
-/* Add a little top spacing to project card bodies after removing images */
-#projects .card .card-body{ padding-top:1.25rem; }
-
-/* Cards and skills */
-.card{ border:none; background:var(--card); color:var(--text); }
-.skill{ background:var(--glass); padding:16px; border-radius:12px; text-align:center; font-weight:600; }
-
-/* Buttons */
-.btn-primary{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); border:none; }
-.btn-outline-secondary{ color:var(--text); border-color:rgba(255,255,255,0.08); }
-
-/* Footer */
-footer{ color:var(--muted); }
-
-/* Animations */
-@keyframes rise { from { transform: translateY(18px); opacity:0 } to { transform:none; opacity:1 } }
-@keyframes up { from { transform: translateY(40px); opacity:0 } to { transform:none; opacity:1 } }
-.animate-rise{ animation:rise 700ms ease forwards; }
-.animate-up{ animation:up 700ms 150ms ease forwards; }
-.animate-raise{ animation:up 700ms 300ms ease forwards; }
-
-/* Utility */
-.shadow-sm{ box-shadow: 0 6px 18px rgba(2,6,23,0.6); }
-
-/* Contact form result */
-#formResult{ padding:10px; border-radius:8px; background:rgba(0,0,0,0.2); color:var(--text); }
-
-/* Responsive tweaks */
-@media (max-width:991px){
-  .hero{ padding-top:6rem; text-align:center; }
-  .profile-img{ margin:1.5rem auto 0; }
+/* Outline accent button */
+.btn-outline-accent {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  transition: all var(--transition);
+}
+.btn-outline-accent:hover {
+  background: var(--accent);
+  color: #0b1220;
 }
 
-/* Auto switch based on saved theme */
-html.light body { background:linear-gradient(180deg,#f6f9fc,#eef6ff 120%); }
+/* Profile Image */
+.profile-img {
+  width: 260px;
+  height: 260px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 6px rgba(142,232,155,0.1), var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.profile-img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 8px rgba(142,232,155,0.18), var(--shadow);
+}
+
+/* ─── Section Titles ────────────────────────────────────────── */
+.section-title {
+  color: var(--accent);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.bg-soft {
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+}
+
+/* ─── Glassmorphism Cards ───────────────────────────────────── */
+.card {
+  border: 1px solid var(--glass-border) !important;
+  background: var(--card) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+  border-radius: 16px !important;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.glass-card {
+  background: var(--card) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+#projects .glass-card {
+  display: flex;
+  flex-direction: column;
+}
+#projects .glass-card .card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+#projects .glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.5) !important;
+}
+html.light #projects .glass-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
+}
+
+/* Project icon emoji */
+.project-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* ─── Tech Badges ───────────────────────────────────────────── */
+.tech-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(142,232,155,0.1);
+  border: 1px solid rgba(142,232,155,0.25);
+  color: var(--accent);
+  margin: 2px 2px 0 0;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.02em;
+}
+html.light .tech-badge {
+  background: rgba(46,164,79,0.08);
+  border-color: rgba(46,164,79,0.3);
+}
+
+/* ─── Project Filter Bar ────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  border: 1.5px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--muted);
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.filter-btn.active {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  color: #0b1220;
+  box-shadow: 0 4px 16px rgba(142,232,155,0.3);
+}
+
+/* Project items — animated hide/show */
+.project-item {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.project-item.hidden {
+  display: none;
+}
+
+/* ─── Skills ────────────────────────────────────────────────── */
+.skill {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  padding: 18px 12px;
+  border-radius: 14px;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform var(--transition), border-color var(--transition);
+  cursor: default;
+}
+.skill:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+.skill-icon {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: none;
+  color: #0b1220;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  color: #0b1220;
+}
+.btn-outline-secondary {
+  color: var(--text);
+  border-color: var(--glass-border);
+  transition: all var(--transition);
+}
+.btn-outline-secondary:hover {
+  background: var(--glass);
+  color: var(--text);
+}
+
+/* ─── Contact Form ──────────────────────────────────────────── */
+.form-control {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text) !important;
+  border-radius: 10px !important;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.form-control::placeholder { color: var(--muted); }
+.form-control:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(142,232,155,0.15) !important;
+  outline: none;
+}
+#formResult { padding: 12px 16px; border-radius: 10px; background: rgba(0,0,0,0.2); color: var(--text); }
+#formResult.success { background: rgba(142,232,155,0.15); color: var(--accent); border: 1px solid rgba(142,232,155,0.3); }
+#formResult.error { background: rgba(255,100,100,0.1); color: #ff8080; border: 1px solid rgba(255,100,100,0.3); }
+
+/* ─── Social Links (footer) ─────────────────────────────────── */
+.social-links { display: flex; justify-content: center; gap: 1rem; }
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  color: var(--muted);
+  background: var(--glass);
+  transition: all var(--transition);
+}
+.social-icon:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(142,232,155,0.2);
+}
+
+/* ─── Footer ────────────────────────────────────────────────── */
+footer {
+  color: var(--muted);
+  border-top: 1px solid var(--glass-border);
+  background: var(--glass);
+}
+footer small { font-size: 0.83rem; }
+
+/* ─── Animations ────────────────────────────────────────────── */
+@keyframes rise { from { transform: translateY(18px); opacity:0; } to { transform:none; opacity:1; } }
+@keyframes up   { from { transform: translateY(40px); opacity:0; } to { transform:none; opacity:1; } }
+.animate-rise  { animation: rise 700ms ease forwards; }
+.animate-up    { animation: up 700ms 150ms ease both; }
+.animate-raise { animation: up 700ms 300ms ease both; }
+
+/* ─── Utilities ─────────────────────────────────────────────── */
+.shadow-sm { box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important; }
+a { color: var(--accent); text-decoration: none; transition: opacity var(--transition); }
+a:hover { opacity: 0.8; }
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width:991px) {
+  .hero { padding-top: 5rem; text-align: center; }
+  .hero .lead { margin: 0 auto 1.5rem; }
+  .profile-img { margin: 2rem auto 0; }
+  .section-title::after { left: 50%; transform: translateX(-50%); }
+  .filter-bar { justify-content: center; }
+}
+
+/* ─── Light mode overrides ──────────────────────────────────── */
+html.light body {
+  background: linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 100%);
+  background-attachment: fixed;
+}
+html.light .form-control {
+  background: rgba(255,255,255,0.8) !important;
+}
